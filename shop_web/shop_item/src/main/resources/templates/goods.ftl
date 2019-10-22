@@ -619,7 +619,7 @@
         </div>
     </div>
     <!-- 商品展示 End -->
-
+    <#--注释-->
     <script type="text/javascript">
         //添加购物车
         function addCart(){
