@@ -13,4 +13,11 @@ public interface IGoodsService {
 
     //添加商品
     int insertGoods(Goods goods);
+
+    /**
+     * 根据商品id查询商品详情
+     * @param gid
+     * @return
+     */
+    Goods queryById(Integer gid);
 }

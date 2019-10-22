@@ -12,6 +12,8 @@
     <script type="text/javascript" src="js/jquery.js" ></script>
     <script type="text/javascript" src="js/topNav.js" ></script>
     <script type="text/javascript" src="js/shop_goods.js" ></script>
+    <script type="text/javascript" src="js/shopcart.js" ></script>
+
 
     <script type="text/javascript" src="js/login.js" ></script>
 </head>
@@ -56,16 +58,10 @@
                     </li>
 
                     <li>
+                        <!-- TODO 购物车展示列表 -->
                         <div class="topNav_menu">
-                            <a href="#" class="topNavHover">购物车<b>0</b>种商品<i></i></a>
-                            <div class="topNav_menu_bd" style="display:none;">
-                                <!--
-                                <ul>
-                                  <li><a title="已售出的商品" target="_top" href="#">已售出的商品</a></li>
-                                  <li><a title="销售中的商品" target="_top" href="#">销售中的商品</a></li>
-                                </ul>
-                                -->
-                                <p>还没有商品，赶快去挑选！</p>
+                            <a href="#" class="topNavHover">购物车<b id="cartnumberid">0</b>种商品<i></i></a>
+                            <div id="cartid" class="topNav_menu_bd" style="display:none;width: 300px; height: 400px">
                             </div>
                         </div>
                     </li>
@@ -116,11 +112,11 @@
             </div>
             <div class="clear"></div>
             <div class="search_tag">
-                <a href="">李宁</a>
-                <a href="">耐克</a>
-                <a href="">Kappa</a>
-                <a href="">双肩包</a>
-                <a href="">手提包</a>
+                <a >李宁</a>
+                <a >耐克</a>
+                <a >Kappa</a>
+                <a >双肩包</a>
+                <a >手提包</a>
             </div>
 
         </div>
@@ -138,331 +134,331 @@
                 <ul class="shop_hd_menu_all_category_hd_menu clearfix">
                     <!-- 单个菜单项 -->
                     <li id="cat_1" class="">
-                        <h3><a href="" title="男女服装">男女服装</a></h3>
+                        <h3><a  title="男女服装">男女服装</a></h3>
                         <div id="cat_1_menu" class="cat_menu clearfix" style="">
                             <dl class="clearfix">
-                                <dt><a href="女装" href="">女装</a></dt>
+                                <dt><a href="女装" >女装</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
 
                             <dl class="clearfix">
-                                <dt><a href="男装" href="">男装</a></dt>
+                                <dt><a href="男装" >男装</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
                         </div>
                     </li>
                     <!-- 单个菜单项 End -->
                     <li id="cat_2" class="">
-                        <h3><a href="" title="鞋包配饰">鞋包配饰</a></h3>
+                        <h3><a  title="鞋包配饰">鞋包配饰</a></h3>
                         <div id="cat_1_menu" class="cat_menu clearfix" style="">
                             <dl class="clearfix">
-                                <dt><a href="鞋子" href="">鞋子</a></dt>
+                                <dt><a href="鞋子" >鞋子</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
 
                             <dl class="clearfix">
-                                <dt><a href="包包" href="">包包</a></dt>
+                                <dt><a href="包包" >包包</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
                         </div>
                     </li>
 
                     <li id="cat_3" class="">
-                        <h3><a href="" title="美容美妆">美容美妆</a></h3>
+                        <h3><a  title="美容美妆">美容美妆</a></h3>
                         <div id="cat_1_menu" class="cat_menu clearfix" style="">
                             <dl class="clearfix">
-                                <dt><a href="美容" href="">美容</a></dt>
+                                <dt><a href="美容" >美容</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
 
                             <dl class="clearfix">
-                                <dt><a href="美妆" href="">美妆</a></dt>
+                                <dt><a href="美妆" >美妆</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
                         </div>
                     </li>
 
                     <li id="cat_4" class="">
-                        <h3><a href="" title="美容美妆">美容美妆</a></h3>
+                        <h3><a  title="美容美妆">美容美妆</a></h3>
                         <div id="cat_1_menu" class="cat_menu clearfix" style="">
                             <dl class="clearfix">
-                                <dt><a href="美容" href="">美容</a></dt>
+                                <dt><a href="美容" >美容</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
 
                             <dl class="clearfix">
-                                <dt><a href="美妆" href="">美妆</a></dt>
+                                <dt><a href="美妆" >美妆</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
                         </div>
                     </li>
 
                     <li id="cat_5" class="">
-                        <h3><a href="" title="美容美妆">美容美妆</a></h3>
+                        <h3><a  title="美容美妆">美容美妆</a></h3>
                         <div id="cat_1_menu" class="cat_menu clearfix" style="">
                             <dl class="clearfix">
-                                <dt><a href="美容" href="">美容</a></dt>
+                                <dt><a href="美容" >美容</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
 
                             <dl class="clearfix">
-                                <dt><a href="美妆" href="">美妆</a></dt>
+                                <dt><a href="美妆" >美妆</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
                         </div>
                     </li>
 
                     <li id="cat_6" class="">
-                        <h3><a href="" title="美容美妆">美容美妆</a></h3>
+                        <h3><a  title="美容美妆">美容美妆</a></h3>
                         <div id="cat_1_menu" class="cat_menu clearfix" style="">
                             <dl class="clearfix">
-                                <dt><a href="美容" href="">美容</a></dt>
+                                <dt><a href="美容" >美容</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
 
                             <dl class="clearfix">
-                                <dt><a href="美妆" href="">美妆</a></dt>
+                                <dt><a href="美妆" >美妆</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
                         </div>
                     </li>
                     <li id="cat_7" class="">
-                        <h3><a href="" title="美容美妆">美容美妆</a></h3>
+                        <h3><a  title="美容美妆">美容美妆</a></h3>
                         <div id="cat_1_menu" class="cat_menu clearfix" style="">
                             <dl class="clearfix">
-                                <dt><a href="美容" href="">美容</a></dt>
+                                <dt><a href="美容" >美容</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
 
                             <dl class="clearfix">
-                                <dt><a href="美妆" href="">美妆</a></dt>
+                                <dt><a href="美妆" >美妆</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
                         </div>
                     </li>
                     <li id="cat_8" class="">
-                        <h3><a href="" title="美容美妆">美容美妆</a></h3>
+                        <h3><a  title="美容美妆">美容美妆</a></h3>
                         <div id="cat_1_menu" class="cat_menu clearfix" style="">
                             <dl class="clearfix">
-                                <dt><a href="美容" href="">美容</a></dt>
+                                <dt><a href="美容" >美容</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
 
                             <dl class="clearfix">
-                                <dt><a href="美妆" href="">美妆</a></dt>
+                                <dt><a href="美妆" >美妆</a></dt>
                                 <dd>
-                                    <a href="">风衣</a>
-                                    <a href="">长袖连衣裙</a>
-                                    <a href="">毛呢连衣裙</a>
-                                    <a href="">半身裙</a>
-                                    <a href="">小脚裤</a>
-                                    <a href="">加绒打底裤</a>
-                                    <a href="">牛仔裤</a>
-                                    <a href="">打底衫</a>
-                                    <a href="">情侣装</a>
-                                    <a href="">棉衣</a>
-                                    <a href="">毛呢大衣</a>
-                                    <a href="">毛呢短裤</a>
+                                    <a >风衣</a>
+                                    <a >长袖连衣裙</a>
+                                    <a >毛呢连衣裙</a>
+                                    <a >半身裙</a>
+                                    <a >小脚裤</a>
+                                    <a >加绒打底裤</a>
+                                    <a >牛仔裤</a>
+                                    <a >打底衫</a>
+                                    <a >情侣装</a>
+                                    <a >棉衣</a>
+                                    <a >毛呢大衣</a>
+                                    <a >毛呢短裤</a>
                                 </dd>
                             </dl>
                         </div>
                     </li>
-                    <li class="more"><a href="">查看更多分类</a></li>
+                    <li class="more"><a >查看更多分类</a></li>
                 </ul>
             </div>
         </div>
@@ -470,13 +466,13 @@
 
         <!-- 普通导航菜单 -->
         <ul class="shop_hd_menu_nav">
-            <li class="current_link"><a href=""><span>首页</span></a></li>
-            <li class="link"><a href=""><span>团购</span></a></li>
-            <li class="link"><a href=""><span>品牌</span></a></li>
-            <li class="link"><a href=""><span>优惠卷</span></a></li>
-            <li class="link"><a href=""><span>积分中心</span></a></li>
-            <li class="link"><a href=""><span>运动专场</span></a></li>
-            <li class="link"><a href=""><span>微商城</span></a></li>
+            <li class="current_link"><a ><span>首页</span></a></li>
+            <li class="link"><a ><span>团购</span></a></li>
+            <li class="link"><a ><span>品牌</span></a></li>
+            <li class="link"><a ><span>优惠卷</span></a></li>
+            <li class="link"><a ><span>积分中心</span></a></li>
+            <li class="link"><a ><span>运动专场</span></a></li>
+            <li class="link"><a ><span>微商城</span></a></li>
         </ul>
         <!-- 普通导航菜单 End -->
     </div>
@@ -488,10 +484,10 @@
 <div class="shop_hd_breadcrumb">
     <strong>当前位置：</strong>
     <span>
-			<a href="">首页</a>&nbsp;›&nbsp;
-			<a href="">商品分类</a>&nbsp;›&nbsp;
-			<a href="">男装女装</a>&nbsp;›&nbsp;
-			<a href="">男装</a>
+			<a >首页</a>&nbsp;›&nbsp;
+			<a >商品分类</a>&nbsp;›&nbsp;
+			<a >男装女装</a>&nbsp;›&nbsp;
+			<a >男装</a>
 		</span>
 </div>
 <div class="clear"></div>
@@ -627,8 +623,10 @@
             var gid = ${goods.id};
             //获得商品数量
             var gnumber = $("#good_nums").val();
+            //获得商品单价
+            var price = ${goods.price}
             //加入购物车
-            location.href = "http://localhost:16666/cart/insert?gid=" + gid + "&gnumber=" + gnumber;
+            location.href = "http://localhost:16666/cart/insert?gid=" + gid + "&gnumber=" + gnumber + "&price="+ price;
         }
     </script>
 
@@ -642,18 +640,18 @@
                 <dl class="shop_bd_list_type_links clearfix">
                     <dt><strong>女装</strong></dt>
                     <dd>
-                        <span><a href="">风衣</a></span>
-                        <span><a href="">长袖连衣裙</a></span>
-                        <span><a href="">毛呢连衣裙</a></span>
-                        <span><a href="">半身裙</a></span>
-                        <span><a href="">小脚裤</a></span>
-                        <span><a href="">加绒打底裤</a></span>
-                        <span><a href="">牛仔裤</a></span>
-                        <span><a href="">打底衫</a></span>
-                        <span><a href="">情侣装</a></span>
-                        <span><a href="">棉衣</a></span>
-                        <span><a href="">毛呢大衣</a></span>
-                        <span><a href="">毛呢短裤</a></span>
+                        <span><a >风衣</a></span>
+                        <span><a >长袖连衣裙</a></span>
+                        <span><a >毛呢连衣裙</a></span>
+                        <span><a >半身裙</a></span>
+                        <span><a >小脚裤</a></span>
+                        <span><a >加绒打底裤</a></span>
+                        <span><a >牛仔裤</a></span>
+                        <span><a >打底衫</a></span>
+                        <span><a >情侣装</a></span>
+                        <span><a >棉衣</a></span>
+                        <span><a >毛呢大衣</a></span>
+                        <span><a >毛呢短裤</a></span>
                     </dd>
                 </dl>
             </div>
@@ -667,28 +665,28 @@
                 <ul class="clearfix">
 
                     <li class="clearfix">
-                        <div class="goods_name"><a href="">Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
-                        <div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a href=""><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
+                        <div class="goods_name"><a >Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
+                        <div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a ><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
                         <div class="goods_xiaoliang">
-                            <span class="goods_xiaoliang_link"><a href="">去看看</a></span>
+                            <span class="goods_xiaoliang_link"><a >去看看</a></span>
                             <span class="goods_xiaoliang_nums">已销售<strong>99</strong>笔</span>
                         </div>
                     </li>
 
                     <li class="clearfix">
-                        <div class="goods_name"><a href="">Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
-                        <div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a href=""><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
+                        <div class="goods_name"><a >Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
+                        <div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a ><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
                         <div class="goods_xiaoliang">
-                            <span class="goods_xiaoliang_link"><a href="">去看看</a></span>
+                            <span class="goods_xiaoliang_link"><a >去看看</a></span>
                             <span class="goods_xiaoliang_nums">已销售<strong>99</strong>笔</span>
                         </div>
                     </li>
 
                     <li class="clearfix">
-                        <div class="goods_name"><a href="">Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
-                        <div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a href=""><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
+                        <div class="goods_name"><a >Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
+                        <div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a ><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
                         <div class="goods_xiaoliang">
-                            <span class="goods_xiaoliang_link"><a href="">去看看</a></span>
+                            <span class="goods_xiaoliang_link"><a >去看看</a></span>
                             <span class="goods_xiaoliang_nums">已销售<strong>99</strong>笔</span>
                         </div>
                     </li>
@@ -706,28 +704,28 @@
                 <ul class="clearfix">
 
                     <li class="clearfix">
-                        <div class="goods_name"><a href="">Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
-                        <div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a href=""><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
+                        <div class="goods_name"><a >Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
+                        <div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a ><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
                         <div class="goods_xiaoliang">
-                            <span class="goods_xiaoliang_link"><a href="">去看看</a></span>
+                            <span class="goods_xiaoliang_link"><a >去看看</a></span>
                             <span class="goods_xiaoliang_nums">已销售<strong>99</strong>笔</span>
                         </div>
                     </li>
 
                     <li class="clearfix">
-                        <div class="goods_name"><a href="">Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
-                        <div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a href=""><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
+                        <div class="goods_name"><a >Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
+                        <div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a ><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
                         <div class="goods_xiaoliang">
-                            <span class="goods_xiaoliang_link"><a href="">去看看</a></span>
+                            <span class="goods_xiaoliang_link"><a >去看看</a></span>
                             <span class="goods_xiaoliang_nums">已销售<strong>99</strong>笔</span>
                         </div>
                     </li>
 
                     <li class="clearfix">
-                        <div class="goods_name"><a href="">Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
-                        <div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a href=""><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
+                        <div class="goods_name"><a >Gap经典弹力纯色长袖T恤|000891347|原价149元</a></div>
+                        <div class="goods_pic"><span class="goods_price">¥ 279.00 </span><a ><img src="images/89a6d6466b00ae32d3c826b9ec639084.jpg_small.jpg" /></a></div>
                         <div class="goods_xiaoliang">
-                            <span class="goods_xiaoliang_link"><a href="">去看看</a></span>
+                            <span class="goods_xiaoliang_link"><a >去看看</a></span>
                             <span class="goods_xiaoliang_nums">已销售<strong>99</strong>笔</span>
                         </div>
                     </li>
@@ -745,9 +743,9 @@
     <div class="shop_goods_bd_xiangqing clearfix">
         <div class="shop_goods_bd_xiangqing_tab">
             <ul>
-                <li id="xiangqing_tab_1" onmouseover="shop_goods_easytabs('1', '1');" onfocus="shop_goods_easytabs('1', '1');" onclick="return false;"><a href=""><span>商品详情</span></a></li>
-                <li id="xiangqing_tab_2" onmouseover="shop_goods_easytabs('1', '2');" onfocus="shop_goods_easytabs('1', '2');" onclick="return false;"><a href=""><span>商品评论</span></a></li>
-                <li id="xiangqing_tab_3" onmouseover="shop_goods_easytabs('1', '3');" onfocus="shop_goods_easytabs('1', '3');" onclick="return false;"><a href=""><span>商品咨询</span></a></li>
+                <li id="xiangqing_tab_1" onmouseover="shop_goods_easytabs('1', '1');" onfocus="shop_goods_easytabs('1', '1');" onclick="return false;"><a ><span>商品详情</span></a></li>
+                <li id="xiangqing_tab_2" onmouseover="shop_goods_easytabs('1', '2');" onfocus="shop_goods_easytabs('1', '2');" onclick="return false;"><a ><span>商品评论</span></a></li>
+                <li id="xiangqing_tab_3" onmouseover="shop_goods_easytabs('1', '3');" onfocus="shop_goods_easytabs('1', '3');" onclick="return false;"><a ><span>商品咨询</span></a></li>
             </ul>
         </div>
         <div class="shop_goods_bd_xiangqing_content clearfix">
@@ -773,11 +771,11 @@
 <div class="shop_footer">
     <div class="shop_footer_link">
         <p>
-            <a href="">首页</a>|
-            <a href="">招聘英才</a>|
-            <a href="">广告合作</a>|
-            <a href="">关于ShopCZ</a>|
-            <a href="">关于我们</a>
+            <a >首页</a>|
+            <a >招聘英才</a>|
+            <a >广告合作</a>|
+            <a >关于ShopCZ</a>|
+            <a >关于我们</a>
         </p>
     </div>
     <div class="shop_footer_copy">

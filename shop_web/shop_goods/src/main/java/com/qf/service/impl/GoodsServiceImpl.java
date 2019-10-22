@@ -1,5 +1,6 @@
 package com.qf.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.qf.dao.GoodsImageMapper;
 import com.qf.dao.GoodsMapper;
 import com.qf.entity.Goods;
@@ -81,5 +82,26 @@ public class GoodsServiceImpl implements IGoodsService {
         rabbitTemplate.convertAndSend("goods_exchange", "", goods);
 
         return 1;
+    }
+
+    /**
+     * 根据商品id查询商品详情
+     * @param gid
+     * @return
+     */
+    @Override
+    public Goods queryById(Integer gid) {
+        //查询商品的详细信息
+        Goods goods = goodsMapper.selectById(gid);
+        //查询商品的封面
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("gid",gid);
+        queryWrapper.eq("isfengmian",1);
+        GoodsImages goodsImages = goodsImageMapper.selectOne(queryWrapper);
+
+        //设置封面
+        goods.setFengmian(goodsImages.getUrl());
+
+        return goods;
     }
 }
