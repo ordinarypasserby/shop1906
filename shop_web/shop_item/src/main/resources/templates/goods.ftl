@@ -12,6 +12,7 @@
     <script type="text/javascript" src="js/jquery.js" ></script>
     <script type="text/javascript" src="js/topNav.js" ></script>
     <script type="text/javascript" src="js/shop_goods.js" ></script>
+
     <script type="text/javascript" src="js/login.js" ></script>
 </head>
 <body>
@@ -579,11 +580,11 @@
 
         </div>
         <div class="shop_goods_show_right">
-            <ul >
+            <ul>
                 <li>
-                    <strong style="font-size:16px; font-weight:bold;">${goods.subject}</strong>
+                    <strong style="font-size:14px; font-weight:bold;">${goods.subject}</strong>
                 </li>
-                <li style="margin-top: 50px">
+                <li>
                     <label>价格：</label>
                     <span><strong>${goods.price?string("￥#,###.##")}</strong>元</span>
                 </li>
@@ -601,31 +602,35 @@
                 </li>
                 <li class="goods_num">
                     <label>购买数量：</label>
-                    <span><a class="good_num_jian" id="good_num_jian" href="javascript:void(0);"></a>
+                    <span>
+                        <!-- 减号 -->
+                        <a class="good_num_jian" id="good_num_jian" href="javascript:void(0);"></a>
+                        <!-- 数量的输入框 -->
                         <input type="text" value="1" id="good_nums" class="good_nums" />
-                        <a href="javascript:void(0);" id="good_num_jia" class="good_num_jia"></a>(当前库存${goods.save}件)</span>
+                        <!-- 加号 -->
+                        <a href="javascript:void(0);" id="good_num_jia" class="good_num_jia"></a>(当前库存0件)
+                    </span>
                 </li>
                 <li style="padding:20px 0;">
                     <label>&nbsp;</label>
-                    <span><a href="" class="goods_sub goods_sub_gou" onclick="addCart()" >加入购物车</a></span>
+                    <span><a class="goods_sub goods_sub_gou" onclick="addCart();">加入购物车</a></span>
                 </li>
             </ul>
         </div>
     </div>
     <!-- 商品展示 End -->
+
     <script type="text/javascript">
         //添加购物车
-        function addCart() {
+        function addCart(){
             //获得商品id
             var gid = ${goods.id};
             //获得商品数量
             var gnumber = $("#good_nums").val();
             //加入购物车
-            location.href="http://localhost:16666/cart/insert?gid="+gid + "&gnumber="+gnumber;
-       }
+            location.href = "http://localhost:16666/cart/insert?gid=" + gid + "&gnumber=" + gnumber;
+        }
     </script>
-
-
 
     <div class="clear mt15"></div>
     <!-- Goods Left -->
