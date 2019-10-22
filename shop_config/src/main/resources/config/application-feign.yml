@@ -1,0 +1,10 @@
+feign:
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 50000
+        readTimeout: 50000
+ribbon:
+  MaxAutoRetriesNextServer: 0

@@ -1,0 +1,7 @@
+spring:
+  mail:
+    #邮件的smtp服务器地址
+    host: smtp.163.com
+    protocol: smtp
+    username: meiyoujiandejianke@163.com
+    password: yijiufengsao

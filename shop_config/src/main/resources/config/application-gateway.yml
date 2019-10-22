@@ -1,0 +1,36 @@
+server:
+  port: 16666
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      #配置请求路由
+      routes:
+        #后台服务的路由规则
+        - uri: lb://web-back
+          predicates:
+            - Path=/back/**
+          filters:
+            #配置一个自带的过滤器，该过滤器的作用表示会过滤请求的第一层路径
+            - StripPrefix=1
+        #搜索服务的路由规则
+        - uri: lb://web-search
+          predicates:
+            - Path=/search/**
+        #详情服务的路由规则
+        - uri: lb://web-item
+          predicates:
+            - Path=/item/**,/html/**
+        #SSO服务的路由规则
+        - uri: lb://web-sso
+          predicates:
+            - Path=/sso/**
+        #购物车服务的路由规则
+        - uri: lb://web-cart
+          predicates:
+            - Path=/cart/**
+            #前台服务的路由规则
+        - uri: lb://web-front
+          predicates:
+            - Path=/**
