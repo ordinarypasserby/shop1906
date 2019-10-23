@@ -288,7 +288,7 @@ public class SsoController {
 
             //登陆成功 - 重定向回首页
             try {
-                return  "redirect:http://localhost:16666/cart/merge?returnUrl=" +  "redirect:http://localhost:16666/cart/merge?returnUrl=" + URLEncoder.encode(returnUrl, "utf-8");
+                return "redirect:http://localhost:16666/cart/merge?returnUrl=" + URLEncoder.encode(returnUrl, "utf-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }

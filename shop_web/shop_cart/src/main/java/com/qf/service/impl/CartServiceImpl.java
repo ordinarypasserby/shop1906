@@ -36,18 +36,21 @@ public class CartServiceImpl implements ICartService {
      * @param gid
      * @param gnumber
      * @param user
-     * @param price
      * @return
      */
     @Override
     public String insertCart(String cartToken, Integer gid, Integer gnumber, User user, BigDecimal price) {
+        //根据id查出商品的信息
+        //Goods goods = goodsFeign.queryById(gid);
+        //得出购物车商品小计
+         BigDecimal subtotal = price.multiply(BigDecimal.valueOf(gnumber));
 
         Shopcart shopcart = new Shopcart(
                 user != null ? user.getId() : null,
                 gid,
                 gnumber,
                 price,
-                null,
+                subtotal,
                 null
                 );
 
@@ -121,6 +124,7 @@ public class CartServiceImpl implements ICartService {
 
             //循环将临时购物车添加到永久购物车中
             for (Shopcart shopcart : shopcarts) {
+                shopcart.setUid(user.getId());
                 cartMapper.insert(shopcart);
             }
 

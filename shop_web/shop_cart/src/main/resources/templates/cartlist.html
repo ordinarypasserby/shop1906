@@ -589,7 +589,11 @@
                         <a href="javascript:void(0);" did="danjia_001" xid="xiaoji_001" ty="+" class="good_num_jia this_good_nums" valId="goods_001">+</a>
                     </span>
                 </td>
-                <td class="gwc_list_xiaoji"><span th:text="${#numbers.formatCurrency(cart.goods.price * cart.number)}">￥<strong id="xiaoji_001" class="good_xiaojis">2550.00</strong></span></td>
+                <td class="gwc_list_xiaoji"><span th:text="${#numbers.formatCurrency(cart.subtotal)}">￥<strong id="xiaoji_001" class="good_xiaojis">2550.00</strong></span></td>
+
+                <!--
+                                <td class="gwc_list_xiaoji"><span th:text="${#numbers.formatCurrency(cart.goods.price * cart.number)}">￥<strong id="xiaoji_001" class="good_xiaojis">2550.00</strong></span></td>
+                -->
                 <!--<td class="gwc_list_caozuo"><a>收藏</a><a href="javascript:void(0);" class="shop_good_delete">删除</a></td>-->
             </tr>
 

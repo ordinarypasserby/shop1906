@@ -23,7 +23,6 @@ public class Shopcart extends BaseEntity {
     private Integer number;
     private BigDecimal cartPrice;
     private BigDecimal subtotal;
-
     @TableField(exist = false)
     private Goods goods;
 }
