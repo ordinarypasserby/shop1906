@@ -21,6 +21,6 @@ public interface GoodsFeign {
     @RequestMapping("/goods/insert")
     Boolean goodsInsert(@RequestBody Goods goods);
 
-    @RequestMapping("goods/queryById")
+    @RequestMapping("/goods/queryById")
     Goods queryById(@RequestParam("gid") Integer gid);
 }

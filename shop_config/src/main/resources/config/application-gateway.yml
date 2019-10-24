@@ -30,7 +30,11 @@ spring:
         - uri: lb://web-cart
           predicates:
             - Path=/cart/**
-            #前台服务的路由规则
+        #订单服务的路由规则
+        - uri: lb://web-order
+          predicates:
+            - Path=/order/**,/address/**
+          #前台服务的路由规则x`
         - uri: lb://web-front
           predicates:
             - Path=/**
