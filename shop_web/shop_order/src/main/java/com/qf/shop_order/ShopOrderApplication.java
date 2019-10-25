@@ -1,4 +1,4 @@
-package com.qf.shop_cart;
+package com.qf.shop_order;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -9,13 +9,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication(scanBasePackages = "com.qf")
 @EnableEurekaClient
-@MapperScan("com.qf.dao")
 @EnableFeignClients(basePackages = "com.qf.feign")
 @EnableTransactionManagement
-public class ShopCartApplication {
+@MapperScan("com.qf.dao")
+public class ShopOrderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ShopCartApplication.class, args);
+        SpringApplication.run(ShopOrderApplication.class, args);
     }
 
 }

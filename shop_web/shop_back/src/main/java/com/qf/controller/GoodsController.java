@@ -91,7 +91,7 @@ public class GoodsController {
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-        uploadPath = "http://192.168.126.222:8080/" + uploadPath;
+        uploadPath = "http://49.234.21.180:8080/" + uploadPath;
         System.out.println("上传后的路径：" + uploadPath);
 
         return "{\"filename\":\"" + uploadPath + "\"}";

@@ -40,7 +40,7 @@
                                 <ul>
                                     <li><a title="已买到的商品" target="_top" href="#">已买到的商品</a></li>
                                     <li><a title="个人主页" target="_top" href="#">个人主页</a></li>
-                                    <li><a title="我的好友" target="_top" href="#">我的好友</a></li>
+                                    <li><a title="我的订单" target="_top" href="http://localhost:16666/order/list">我的订单</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                     <li>
                         <!-- TODO 购物车展示列表 -->
                         <div class="topNav_menu">
-                            <a href="#" class="topNavHover">购物车<b id="cartnumberid">0</b>种商品<i></i></a>
+                            <a href="http://localhost:16666/cart/showlist" class="topNavHover">购物车<b id="cartnumberid">0</b>种商品<i></i></a>
                             <div id="cartid" class="topNav_menu_bd" style="display:none;width: 300px; height: 400px">
                             </div>
                         </div>
@@ -623,10 +623,9 @@
             var gid = ${goods.id};
             //获得商品数量
             var gnumber = $("#good_nums").val();
-            //获得商品单价
-            var price = ${goods.price}
+
             //加入购物车
-            location.href = "http://localhost:16666/cart/insert?gid=" + gid + "&gnumber=" + gnumber + "&price="+ price;
+            location.href = "http://localhost:16666/cart/insert?gid=" + gid + "&gnumber=" + gnumber;
         }
     </script>
 

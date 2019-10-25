@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -45,14 +44,15 @@ public class CartController {
      */
     @IsLogin
     @RequestMapping("/insert")
-    public String insert(@CookieValue(value = "cart_token",required = false) String cartToken, Integer gid, Integer gnumber, User user, HttpServletResponse response, BigDecimal price){
+    public String insert(@CookieValue(value = "cart_token",required = false) String cartToken, Integer gid, Integer gnumber, User user, HttpServletResponse response){
         System.out.println("添加购物车：" + gid + " " + gnumber);
         System.out.println("当前是否登录：" + user);
 
         //添加到购物车并判断当前用户是否登录？
-        cartToken = cartService.insertCart(cartToken,gid,gnumber,user,price);
+        cartToken = cartService.insertCart(cartToken,gid,gnumber,user);
 
         //将返回的cartToken添加到cookie中国
+
         Cookie cookie = new Cookie("cart_token",cartToken);
         cookie.setMaxAge(60 * 60 * 24 * 365);
         cookie.setPath("/");

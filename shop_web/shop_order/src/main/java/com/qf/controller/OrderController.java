@@ -85,7 +85,6 @@ public class OrderController {
     @IsLogin(mustLogin = true)
     @RequestMapping("/list")
     public String orderList(User user, Model model){
-        System.out.println("进来了");
         List<Orders> orders = orderService.queryByUid(user.getId());
         model.addAttribute("ordersList", orders);
 

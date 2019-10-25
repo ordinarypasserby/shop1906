@@ -3,7 +3,6 @@ package com.qf.service;
 import com.qf.entity.Shopcart;
 import com.qf.entity.User;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -20,7 +19,7 @@ public interface ICartService {
      * @param user
      * @return
      */
-    String insertCart(String cartToken, Integer gid, Integer gnumber, User user, BigDecimal price);
+    String insertCart(String cartToken, Integer gid, Integer gnumber, User user);
 
     /**
      * 查询购物车列表
