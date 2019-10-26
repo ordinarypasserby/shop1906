@@ -70,10 +70,10 @@ public class OrderController {
     @RequestMapping("/insert")
     public String orderInsert(Integer aid,Integer[] cartids,User user){
 
-        orderService.insertOrder(aid,cartids,user.getId());
+        Orders orders = orderService.insertOrder(aid,cartids,user.getId());
 
         //去支付
-        return "pay";
+        return "redirect:http://localhost:16666/pay/alipay?oid="+ orders.getId();
     }
 
     /**

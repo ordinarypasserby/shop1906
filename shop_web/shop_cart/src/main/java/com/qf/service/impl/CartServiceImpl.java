@@ -248,5 +248,35 @@ public class CartServiceImpl implements ICartService {
         return cartMapper.deleteBatchIds(Arrays.asList(ids));
     }
 
+    /**
+     * 修改购物车中商品的数量
+     * @param user
+     * @param gid
+     * @param number
+     * @return
+     */
+    @Override
+    public Shopcart updateGoodsNumber(User user, Integer gid, Integer number) {
+
+        if (user ==null){
+
+        }else {
+            QueryWrapper queryWrapper = new QueryWrapper();
+            queryWrapper.eq("gid",gid);
+            queryWrapper.eq("uid",user.getId());
+            Shopcart shopcart = cartMapper.selectOne(queryWrapper);
+            shopcart.setGid(gid)
+                    .setNumber(number)
+                    .setUid(user.getId())
+                    .setSubtotal( shopcart.getCartPrice().multiply(BigDecimal.valueOf(number)));
+            cartMapper.updateById(shopcart);
+
+            Shopcart shopcart1 = cartMapper.selectOne(queryWrapper);
+            return shopcart1;
+        }
+
+        return null;
+    }
+
 
 }

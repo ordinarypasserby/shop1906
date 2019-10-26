@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface IOrderService {
 
-    int  insertOrder(Integer aid, Integer[] cartids, Integer uid);
+    Orders  insertOrder(Integer aid, Integer[] cartids, Integer uid);
 
     /**
      * 查看订单列表
@@ -18,4 +18,13 @@ public interface IOrderService {
      * @return
      */
     List<Orders> queryByUid(Integer uid);
+
+    /**
+     * 根据订单号查询订单信息
+     * @param oid
+     * @return
+     */
+    Orders queryById(Integer oid);
+
+    Orders queryByOrdersId(String orderid);
 }

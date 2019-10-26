@@ -58,4 +58,13 @@ public interface ICartService {
      * @return
      */
     int deleteByIds(Integer[] ids);
+
+    /**
+     * 修改购物车中商品的数量
+     * @param user
+     * @param gid
+     * @param number
+     * @return
+     */
+    Shopcart updateGoodsNumber(User user, Integer gid, Integer number);
 }

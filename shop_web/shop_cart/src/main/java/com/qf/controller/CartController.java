@@ -78,6 +78,24 @@ public class CartController {
     }
 
     /**
+     * 修改购物车中的数量
+     * @param user
+     * @param gid
+     * @param number
+     */
+    @IsLogin
+    @RequestMapping("/updateGoodsNumber")
+    @ResponseBody
+    public Shopcart updateGoodsNumber(User user,Integer gid,Integer number){
+        System.out.println("进来了");
+        System.out.println(user);
+        System.out.println("gid:"+gid +"number"+ number);
+        Shopcart shopcart = cartService.updateGoodsNumber(user, gid, number);
+
+        return shopcart;
+    }
+
+    /**
      * 合并购物车
      * @param cartToken
      * @param user

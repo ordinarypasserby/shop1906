@@ -585,20 +585,65 @@
                 <td class="gwc_list_danjia"><span th:text="${#numbers.formatCurrency(cart.goods.price)}">￥<strong id="danjia_001">2550.00</strong></span></td>
                 <td class="gwc_list_shuliang">
                     <span>
-                        <a class="good_num_jian this_good_nums" did="danjia_001" xid="xiaoji_001" ty="-" valId="goods_001" href="javascript:void(0);">-</a>
+                        <a  href="javascript:void(0);" onclick="jian(this)" th:alt="${cart.gid}" >-</a>
                         <input type="text" value="1" id="goods_001" class="good_nums" th:value="${cart.number}" />
-                        <a href="javascript:void(0);" did="danjia_001" xid="xiaoji_001" ty="+" class="good_num_jia this_good_nums" valId="goods_001">+</a>
+                        <a href="javascript:void(0);" onclick="jia(this)" th:alt="${cart.gid}">+</a>
                     </span>
                 </td>
-                <td class="gwc_list_xiaoji"><span th:text="${#numbers.formatCurrency(cart.subtotal)}">￥<strong id="xiaoji_001" class="good_xiaojis">2550.00</strong></span></td>
+                <td class="gwc_list_xiaoji"><span id="finalPrice" th:text="${#numbers.formatCurrency(cart.goods.price * cart.number)}">￥<strong id="xiaoji_001" class="good_xiaojis">2550.00</strong></span></td>
 
                 <!--
                                 <td class="gwc_list_xiaoji"><span th:text="${#numbers.formatCurrency(cart.goods.price * cart.number)}">￥<strong id="xiaoji_001" class="good_xiaojis">2550.00</strong></span></td>
-                -->
-                <!--<td class="gwc_list_caozuo"><a>收藏</a><a href="javascript:void(0);" class="shop_good_delete">删除</a></td>-->
-            </tr>
 
+                <td class="gwc_list_caozuo"><a>收藏</a><a href="javascript:void(0);" class="shop_good_delete">删除</a></td>-->
+            </tr>
             </tbody>
+            <script>
+                function jian(ele) {
+                    var gid =$(ele).attr("alt")
+                    var number = $("#goods_001").val();
+                    var newNumber = number - 1;
+                    if (newNumber<1){
+                        return;
+                    }
+                    $("#goods_001").val(newNumber);
+                    // alert(gid);
+                    // alert(newNumber);
+                    $.ajax({
+                        type: "post",
+                        url: "http://localhost:16666/cart/updateGoodsNumber",
+                        data: {"gid":gid,"number":newNumber},
+                        success: function(data){
+
+                            //$("#goods_001").val(data.number);
+                            //$("#finalPrice").html(data.subtotal);
+                            //刷新页面
+                            location.reload();
+                        }
+                    })
+
+                }
+                function jia(ele) {
+                    var gid =$(ele).attr("alt")
+                    var number = $("#goods_001").val();
+                    var newNumber = parseInt(number) + 1;
+                    if (newNumber<1){
+                        return;
+                    }
+                    $("#goods_001").val(newNumber);
+                    // alert(gid);
+                    // alert(newNumber);
+                    $.ajax({
+                        type: "post",
+                        url: "http://localhost:16666/cart/updateGoodsNumber",
+                        data: {"gid":gid,"number":newNumber},
+                        success: function(data){
+                            //刷新页面
+                            location.reload();
+                        }
+                    })
+                }
+            </script>
             <tfoot>
             <tr>
                 <td colspan="6">
