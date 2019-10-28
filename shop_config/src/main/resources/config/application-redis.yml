@@ -1,3 +1,4 @@
 spring:
   redis:
     host: 49.234.21.180
+    password: 394922

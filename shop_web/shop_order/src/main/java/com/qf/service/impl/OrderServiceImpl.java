@@ -126,4 +126,19 @@ public class OrderServiceImpl implements IOrderService {
         return ordersMapper.selectOne(queryWrapper);
     }
 
+    /**
+     * 修改支付状态
+     * @param orderid
+     * @param status
+     * @return
+     */
+    @Override
+    public int updateOrderState(String orderid, Integer status) {
+        Orders orders = this.queryByOrdersId(orderid);
+        orders.setStatus(status);
+        System.out.println(orders);
+
+        return ordersMapper.updateById(orders);
+    }
+
 }
