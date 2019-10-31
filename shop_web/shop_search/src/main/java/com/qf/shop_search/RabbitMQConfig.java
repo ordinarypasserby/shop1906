@@ -25,7 +25,6 @@ public class RabbitMQConfig {
 
     @Bean("item_queue")
     public Queue getQueue2(){
-
         return new Queue("item_queue");
     }
 

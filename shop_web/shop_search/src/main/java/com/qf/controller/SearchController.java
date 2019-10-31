@@ -24,12 +24,13 @@ public class SearchController {
     private ISearchService searchService;
 
     @RequestMapping("/keyword")
-    public String searchByKeywork(Page page, String keyword, Model model){
-       // PageInfo<Goods> pageInfo = searchService.query(page,keyword);
-        List<Goods> goods = searchService.query(keyword);
+    public String searchByKeywork(Page page,String keyword, Model model){
+        System.out.println(page.getRows() + "+"+ page.getStart());
+
+        List<Goods> goods = searchService.query(keyword,page);
         model.addAttribute("goodList",goods);
-       // model.addAttribute("pageInfo",pageInfo);
-       // model.addAttribute("url","/search/keyword");
+        model.addAttribute("keyword",keyword);
+        model.addAttribute("page",page);
 
         return "searchList";
     }

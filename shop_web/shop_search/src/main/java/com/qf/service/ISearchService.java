@@ -16,7 +16,7 @@ public interface ISearchService  {
     boolean insert(Goods goods);
 
     //根据关键字搜索索引库
-    List<Goods> query(String keyword);
+    List<Goods> query(String keyword,Page page);
 
     //根据关键字搜索索引库并分页
     PageInfo<Goods> query(Page page, String keyword);

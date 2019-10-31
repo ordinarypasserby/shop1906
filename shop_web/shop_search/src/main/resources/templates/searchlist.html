@@ -718,6 +718,9 @@
 
             </ul>
         </div>
+        <input id="page_start" type="hidden" th:value= "${page.start}">
+        <input id="keyword" type="hidden" th:value="${keyword}">
+        <input id="page_rows" type="hidden" th:value="${page.rows}">
         <div class="clear"></div>
         <div class="pagination">
             <ul><li><span>首页</span></li>
@@ -725,13 +728,32 @@
                 <li><span class="currentpage">1</span></li>
                 <li><span>下一页</span></li>
                 <li><span>末页</span></li>
+                <li><a  >下一页</a></li>
             </ul>
+            <input type="button" onclick="nextPage()" value="下一页">
         </div>
         <!-- 商品列表 End -->
 
 
     </div>
 </div>
+<script>
+    function nextPage() {
+        var keyword = $("#keyword").val();
+        var rows = parseInt($("#page_rows").val());
+        var start =parseInt($("#page_start").val() )+rows ;
+        alert(rows)
+        alert( start);
+        $.ajax({
+            type: "get",
+            url: "http://localhost:16666/search/keyword",
+            data: {"keyword": keyword,"start":1,"rows":rows},
+            success: function (data) {
+                location.reload();
+            }
+        })
+    }
+</script>
 <!-- List Body End -->
 
 <!-- Footer - wll - 2013/3/24 -->

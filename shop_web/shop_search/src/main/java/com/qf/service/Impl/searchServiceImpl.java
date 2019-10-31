@@ -63,7 +63,7 @@ public class searchServiceImpl implements ISearchService {
 
     //根据关键字搜索索引库
     @Override
-    public List<Goods> query(String keyword) {
+    public List<Goods> query(String keyword,Page page) {
         System.out.println("开始进行搜索：" + keyword);
 
         SolrQuery solrQuery = new SolrQuery();
@@ -75,8 +75,9 @@ public class searchServiceImpl implements ISearchService {
 
         //进行分页的设置
         //limit ?,?
-        solrQuery.setStart(0);
-        solrQuery.setRows(20);
+        System.out.println("设置的start："+page.getStart()+"+"+"设置的rows："+page.getRows());
+        solrQuery.setStart(page.getStart());
+        solrQuery.setRows(page.getRows());
 
         //进行高亮的设置
         solrQuery.setHighlight(true);//开启高亮
@@ -104,7 +105,7 @@ public class searchServiceImpl implements ISearchService {
             SolrDocumentList documents = response.getResults();
 
             //获得分页的总条数
-            documents.getNumFound();
+            long numFound = documents.getNumFound();
 
             List<Goods> goodsList = new ArrayList<>();
             for (SolrDocument document : documents) {
