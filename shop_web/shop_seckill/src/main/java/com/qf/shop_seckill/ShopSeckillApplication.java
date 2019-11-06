@@ -1,23 +1,19 @@
-package com.qf.shop_goods;
+package com.qf.shop_seckill;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication(scanBasePackages = "com.qf")
 @EnableEurekaClient
-@MapperScan("com.qf.dao")
-@EnableTransactionManagement
 @EnableFeignClients(basePackages = "com.qf.feign")
-@EnableCaching
-public class ShopGoodsApplication {
+@EnableScheduling
+public class ShopSeckillApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ShopGoodsApplication.class, args);
+        SpringApplication.run(ShopSeckillApplication.class, args);
     }
 
 }

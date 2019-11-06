@@ -3,4 +3,4 @@ spring:
     config:
       uri: http://localhost:20000
       name: application
-      profile: eureka,datasource,goods,feign,rabbitmq,redis
+      profile: seckill,eureka,feign,rabbitmq,redis

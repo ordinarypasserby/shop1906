@@ -3,6 +3,7 @@ package com.qf.controller;
 import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import com.qf.entity.Goods;
+import com.qf.entity.GoodsSeckill;
 import com.qf.feign.GoodsFeign;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,7 +122,8 @@ public class GoodsController {
      * @return
      */
     @RequestMapping("/insert")
-    public String goodsInsert(Goods goods){
+    public String goodsInsert(Goods goods, GoodsSeckill goodsSeckill){
+        goods.setGoodsSeckill(goodsSeckill);
         Boolean flag = goodsFeign.goodsInsert(goods);
         return flag ?"redirect:http://localhost:16666/back/goodsManager/list" : "error";
     }

@@ -3,6 +3,7 @@ package com.qf.service;
 import com.qf.entity.Goods;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author DingYuHui
@@ -20,4 +21,6 @@ public interface IGoodsService {
      * @return
      */
     Goods queryById(Integer gid);
+
+    List<Map<String, Object>> querySeckillByTime();
 }

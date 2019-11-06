@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author DingYuHui
@@ -40,6 +41,7 @@ public class GoodsController {
     @RequestMapping("/insert")
     @ResponseBody
     public Boolean goodsInsert(@RequestBody Goods goods){
+
         int result = goodsService.insertGoods(goods);
         return result>0;
     }
@@ -51,7 +53,17 @@ public class GoodsController {
     @RequestMapping("/queryById")
     @ResponseBody
     public Goods queryById(@RequestParam("gid") Integer gid){
-
         return goodsService.queryById(gid);
+    }
+
+    /**
+     * 查看当前场的秒杀信息
+     * @return
+     */
+    @RequestMapping("/queryByTime")
+    @ResponseBody
+    public List<Map<String,Object>> querySeckillByTime(){
+        List<Map<String, Object>> maps = goodsService.querySeckillByTime();
+        return maps;
     }
 }
