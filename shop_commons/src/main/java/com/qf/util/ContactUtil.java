@@ -16,5 +16,10 @@ public interface ContactUtil {
      */
     String REDIS_SECKILL_START_SET = "seckill_start";
 
+    /**
+     * 当前秒杀开始的时间后缀
+     */
+    String REDIS_SECKILL_TIME_PROFIX = "time_profix";
+
 
 }

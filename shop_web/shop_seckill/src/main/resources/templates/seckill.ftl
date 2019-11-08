@@ -13,6 +13,11 @@
     <script type="text/javascript" src="js/topNav.js" ></script>
     <script type="text/javascript" src="js/shop_goods.js" ></script>
     <script type="text/javascript" src="js/shopcart.js" ></script>
+    <!-- 弹出框插件的依赖 -->
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script type="text/javascript"
+            src="widget/dialog/jquery-ui-1.9.2.custom.min.js"></script>
+
 
 
     <script type="text/javascript" src="js/login.js" ></script>
@@ -607,7 +612,7 @@
                     <label>&nbsp;&nbsp;</label>
                     <span><strong style="color: red">距离秒杀开始还剩：<a id="count_down">00:00:00</a></strong></span>
                     <label>&nbsp;&nbsp;</label>
-                    <span><button disabled="disabled">即将开始</button></span><br/>
+                    <span><button id="startBtn"  disabled="disabled">即将开始</button></span><br/>
                 </li>
             </ul>
         </div>
@@ -631,7 +636,24 @@
             
             if (djsms <= 0){
                 //秒杀已经开始
-                alert("秒杀已经开始了");
+                $("#startBtn").click(function() {
+                    //抢购
+                    //location.href="/seckill/rush/?gid=${goods.id}";
+                    //申请验证码
+                    $("#code_img").attr("src","/seckill/getCode");
+
+                    //弹出验证码的弹出框
+                    $("#code_div").dialog({
+                        width: 300,
+                        height: 160,
+                        title: "验证码",
+                        modal: true
+                    })
+                })
+                
+                
+                $("#startBtn").html("点击抢购");
+                $("#startBtn").removeAttr("disabled");
                 return;
             }
             //通过倒计时的时间差计算距离开始的时间
@@ -697,6 +719,16 @@
         })
 
     </script>
+
+    <!-- 验证码的弹出框 -->
+    <div id="code_div" style="display: none;">
+        <form action="/seckill/rush">
+            <input name="gid" type="hidden" value="${goods.id}"/>
+            请输入验证码：<input name="code" style="width: 60px"/><img onclick="this.src='/seckill/getCode?p=' + new Date()" id="code_img"/><br/>
+            <button type="submit">确认</button>
+        </form>
+    </div>
+
 
     <div class="clear mt15"></div>
     <!-- Goods Left -->

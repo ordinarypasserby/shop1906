@@ -31,14 +31,14 @@ public class TimeUtil {
     }
 
     /**
-     * 根据时间计算出评分
+     * 根据时间计算出当前整点对应的时间字符串
      * @param date
      * @return
      */
-    public static double dateSCore(Date date){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddHH");
+    public static String dateSCore(Date date){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyMMddHH");
         String format = simpleDateFormat.format(date);
-        return Double.valueOf(format);
+        return format;
     }
 
 }

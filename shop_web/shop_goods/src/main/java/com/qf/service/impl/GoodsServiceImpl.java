@@ -105,10 +105,9 @@ public class GoodsServiceImpl implements IGoodsService {
             //如果是秒杀商品，将保存到redis中
 
             //计算评分
-            double score = TimeUtil.dateSCore(goods.getGoodsSeckill().getStartTime());
+            String profix = TimeUtil.dateSCore(goods.getGoodsSeckill().getStartTime());
             //将商品信息保存到redis
-            stringRedisTemplate.opsForZSet().add( ContactUtil.REDIS_SECKILL_SORT_SET, goods.getId() + "", score);
-
+            stringRedisTemplate.opsForSet().add(ContactUtil.REDIS_SECKILL_START_SET + "_" + profix, goods.getId()+"");
         }
 
         //将goods发送到指定的交换机中
