@@ -41,4 +41,10 @@ public class TimeUtil {
         return format;
     }
 
+    public static String dateSCore2(Date date){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HHmmssSSS");
+        String format = simpleDateFormat.format(date);
+        return format;
+    }
+
 }

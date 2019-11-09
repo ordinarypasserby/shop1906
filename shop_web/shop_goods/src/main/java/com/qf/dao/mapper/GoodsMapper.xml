@@ -27,4 +27,6 @@
     <select id="queryAllGoods" resultMap="MyResultMap">
         select *,gi.id as 'giid' from goods g join goods_images gi on g.id = gi.gid
     </select>
+
+
 </mapper>

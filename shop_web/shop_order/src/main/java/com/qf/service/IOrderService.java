@@ -29,4 +29,6 @@ public interface IOrderService {
     Orders queryByOrdersId(String orderid);
 
     int updateOrderState(String orderid,Integer status);
+
+    Orders insertSeckillOrder(Integer gid, Integer uid, String orderid);
 }

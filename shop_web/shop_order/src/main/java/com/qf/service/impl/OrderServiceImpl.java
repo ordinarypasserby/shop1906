@@ -141,4 +141,49 @@ public class OrderServiceImpl implements IOrderService {
         return ordersMapper.updateById(orders);
     }
 
+    /**
+     * 添加秒杀订单
+     * @param gid
+     * @param uid
+     * @param orderid
+     * @return
+     */
+    @Override
+    @Transactional
+    public Orders insertSeckillOrder(Integer gid, Integer uid, String orderid) {
+
+        //根据gid查询商品信息
+        Goods goods = goodsFeign.queryById(gid);
+
+        Orders orders = new Orders(
+                orderid,
+                uid,
+                null,
+                null,
+                null,
+                null,
+                goods.getGoodsSeckill().getSeckillPrice(),
+                null
+        );
+
+        ordersMapper.insert(orders);
+
+        //创建订单详情页
+        OrderDetils orderDetils = new OrderDetils(
+                orders.getId(),
+                gid,
+                goods.getSubject(),
+                goods.getGoodsSeckill().getSeckillPrice(),
+                1,
+                goods.getGoodsSeckill().getSeckillPrice(),
+                goods
+        );
+
+        orderDetilMapper.insert(orderDetils);
+
+        return orders;
+
+
+    }
+
 }

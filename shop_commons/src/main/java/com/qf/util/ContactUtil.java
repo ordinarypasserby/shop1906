@@ -21,5 +21,10 @@ public interface ContactUtil {
      */
     String REDIS_SECKILL_TIME_PROFIX = "time_profix";
 
+    /**
+     * 秒杀商品的库存
+     */
+    String REDIS_SECKILL_SAVE = "seckill_save";
+
 
 }

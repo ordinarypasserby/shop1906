@@ -14,4 +14,7 @@ public interface GoodsSeckillMapper extends BaseMapper<GoodsSeckill> {
     List<GoodsSeckill> queryNow();
 
     List<GoodsSeckill> queryNext();
+
+    int reduceStocks(Integer gid);
+
 }

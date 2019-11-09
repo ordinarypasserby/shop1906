@@ -620,6 +620,21 @@
     <!-- 商品展示 End -->
     <#--注释-->
     <script type="text/javascript">
+
+        //设置浏览器页面监听
+        document.addEventListener('visibilitychange',function(){ //浏览器切换事件
+            if(document.visibilityState=='hidden') { //状态判断
+                // console.log("隐藏了！！");
+                //停止定时器
+                clearTimeout(timeout);
+            }else {
+                // console.log("可见了！！");
+                //同步服务器时间
+                getServerNow();
+                //调用倒计时方法 - 开启了定时器
+                djs();
+            }
+        });
         //实现倒计时的方案
 
         //当前时间

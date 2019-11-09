@@ -23,4 +23,6 @@ public interface IGoodsService {
     Goods queryById(Integer gid);
 
     List<Map<String, Object>> querySeckillByTime();
+
+    int reduceStocks(Integer gid);
 }

@@ -108,6 +108,10 @@ public class GoodsServiceImpl implements IGoodsService {
             String profix = TimeUtil.dateSCore(goods.getGoodsSeckill().getStartTime());
             //将商品信息保存到redis
             stringRedisTemplate.opsForSet().add(ContactUtil.REDIS_SECKILL_START_SET + "_" + profix, goods.getId()+"");
+
+            //将库存数保存到redis中作为判断标识
+            Integer seckillSave = goods.getGoodsSeckill().getSeckillSave();
+            stringRedisTemplate.opsForValue().set(ContactUtil.REDIS_SECKILL_SAVE+"_"+goods.getId(),seckillSave+"");
         }
 
         //将goods发送到指定的交换机中
@@ -133,6 +137,11 @@ public class GoodsServiceImpl implements IGoodsService {
 
         //设置封面
         goods.setFengmian(goodsImages.getUrl());
+
+        QueryWrapper queryWrapper1 = new QueryWrapper();
+        queryWrapper1.eq("gid",gid);
+        GoodsSeckill goodsSeckill = goodsSeckillMapper.selectOne(queryWrapper1);
+        goods.setGoodsSeckill(goodsSeckill);
 
         return goods;
     }
@@ -187,5 +196,16 @@ public class GoodsServiceImpl implements IGoodsService {
         seckillList.add(nextMap);
         System.out.println(seckillList);
         return seckillList;
+    }
+
+    /**
+     * 减少库存
+     * @param gid
+     * @return
+     */
+    @Override
+    public int reduceStocks(Integer gid) {
+
+        return goodsSeckillMapper.reduceStocks(gid);
     }
 }
