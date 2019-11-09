@@ -32,8 +32,8 @@ public class RabbitMQListener {
             value = @Queue(name = "seckill_orders_queue",durable = "true",declare = "true"),
             exchange = @Exchange(name = "seckill_exchange",type = "fanout",declare = "true",durable = "true")
     ))
-    public void msghandler(Map<String,Object> map, Message message, Channel channel){
-
+    public void msgHandler(Map<String,Object> map, Message message, Channel channel){
+        System.out.println("orderid监听");
         Integer gid = (Integer) map.get("gid");
         Integer uid = (Integer) map.get("uid");
         String orderid = (String) map.get("orderid");
@@ -42,7 +42,7 @@ public class RabbitMQListener {
         Orders orders = orderService.insertSeckillOrder(gid, uid, orderid);
 
         //删除队列中的这个订单的消息
-        stringRedisTemplate.opsForZSet().remove("seckill_queue_"+gid+orderid);
+        stringRedisTemplate.opsForZSet().remove("seckill_queue_"+gid,orderid);
 
         if (orderid != null){
             //手动确认消息

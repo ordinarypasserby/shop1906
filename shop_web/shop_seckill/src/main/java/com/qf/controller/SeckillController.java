@@ -44,14 +44,11 @@ public class SeckillController {
             "local orderid = ARGV[1]\n" +
             "local now = ARGV[2]\n" +
             "local save = tonumber(redis.call('get', 'seckill_save_'..gid))\n" +
-            "\n" +
             "if save >= 1 then\n" +
             "\tredis.call('decr', 'seckill_save_'..gid)\t\n" +
-            "\t--排队机制\n" +
             "\tredis.call('zadd', 'seckill_queue_'..gid, now, orderid)\n" +
             "\treturn 1\n" +
             "end\n" +
-            "\n" +
             "return 0";
 
 
@@ -87,7 +84,8 @@ public class SeckillController {
                 Collections.singletonList(gid + ""),
                 orderid,
                 score);
-
+        System.out.println("orderid" + orderid);
+        System.out.println("score" + score);
         if (execute == 0) {
             //库存不足
             return "error3";
@@ -102,7 +100,7 @@ public class SeckillController {
 
         rabbitTemplate.convertAndSend("seckill_exchange","",map);
 
-        return "succ";
+        return "queueUp";
     }
 
     /**
@@ -134,7 +132,23 @@ public class SeckillController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    @RequestMapping("queryQueueUp")
+    @ResponseBody
+    public Map<String,Object> queryQueueUp(String orderid,Integer gid){
 
+        Map<String,Object> map = new HashMap<>();
+
+        Long number = stringRedisTemplate.opsForZSet().rank("seckill_queue_" + gid, orderid);
+
+        if (number != null){
+            map.put("code",0);//表示仍在排队
+            map.put("number",number);
+        } else {
+            map.put("code",1);//抢购成功
+        }
+
+        return map;
     }
 }
