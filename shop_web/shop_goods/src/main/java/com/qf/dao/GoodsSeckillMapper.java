@@ -17,4 +17,5 @@ public interface GoodsSeckillMapper extends BaseMapper<GoodsSeckill> {
 
     int reduceStocks(Integer gid);
 
+    int backRollStock(Integer gid);
 }

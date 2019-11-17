@@ -19,4 +19,7 @@
     <update id="reduceStocks">
         update goods_seckill set seckill_save = seckill_save - 1 where gid = #{gid} and seckill_save >=1
     </update>
+    <update id="backRollStock">
+        update goods_seckill set seckill_save = seckill_save + 1 where gid = #{gid}
+    </update>
 </mapper>

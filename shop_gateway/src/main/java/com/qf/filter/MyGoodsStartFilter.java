@@ -45,7 +45,7 @@ public class MyGoodsStartFilter implements GatewayFilter, Ordered {
             return chain.filter(exchange);
         }
 
-        //商品为开抢
+        //商品未开抢
         ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(HttpStatus.SEE_OTHER);
         String msg = null;

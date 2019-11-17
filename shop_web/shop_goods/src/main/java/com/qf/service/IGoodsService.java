@@ -25,4 +25,11 @@ public interface IGoodsService {
     List<Map<String, Object>> querySeckillByTime();
 
     int reduceStocks(Integer gid);
+
+    /**
+     * 订单过期后的库存回滚
+     * @param gid
+     * @return
+     */
+    int backRollStock(Integer gid);
 }

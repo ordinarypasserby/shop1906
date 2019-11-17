@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      profile: http://localhost:20000
+      name: application
+      uri: msg,eureka,rabbitmq,redis

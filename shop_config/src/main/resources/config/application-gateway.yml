@@ -41,6 +41,10 @@ spring:
           filters:
             - myCode
             - isStart
+        #消息服务的路由规则x`
+        - uri: lb://web-msg
+          predicates:
+            - Path=/msg/**
           #秒杀服务的路由规则x`
         - uri: lb://web-seckill
           predicates:

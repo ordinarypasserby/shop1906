@@ -66,4 +66,15 @@ public class GoodsController {
         List<Map<String, Object>> maps = goodsService.querySeckillByTime();
         return maps;
     }
+
+    /**
+     * 订单过期后的库存回滚
+     * @return
+     */
+    @RequestMapping("/backRollStock")
+    @ResponseBody
+    public Boolean backRollStock(@RequestParam("gid") Integer gid){
+        int result = goodsService.backRollStock(gid);
+        return result > 0;
+    }
 }

@@ -208,4 +208,15 @@ public class GoodsServiceImpl implements IGoodsService {
 
         return goodsSeckillMapper.reduceStocks(gid);
     }
+
+    /**
+     * 订单过期后的库存回滚
+     * @param gid
+     * @return
+     */
+    @Override
+    public int backRollStock(Integer gid) {
+
+        return goodsSeckillMapper.backRollStock(gid);
+    }
 }

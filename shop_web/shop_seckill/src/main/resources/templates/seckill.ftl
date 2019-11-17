@@ -610,6 +610,11 @@
                 </li>
                 <li style="padding:20px 0;">
                     <label>&nbsp;&nbsp;</label>
+                    <span>
+                        <button id="remind" onclick="msg_remind();">提醒我</button>
+                        <button id="cancel_remind" onclick="msg_cancel_remind();" style="display: none">取消提醒</button>
+                    </span>
+                    <label>&nbsp;&nbsp;</label>
                     <span><strong style="color: red">距离秒杀开始还剩：<a id="count_down">00:00:00</a></strong></span>
                     <label>&nbsp;&nbsp;</label>
                     <span><button id="startBtn"  disabled="disabled">即将开始</button></span><br/>
@@ -620,6 +625,63 @@
     <!-- 商品展示 End -->
     <#--注释-->
     <script type="text/javascript">
+
+        $(function () {
+            //获得cookie
+           var cookies = document.cookie;
+           var cookiesArray = cookies.split(";");
+            for (var i = 0; i < cookiesArray.length; i++){
+                var cookie = cookiesArray[i];
+                var key = cookie.split("=")[0];
+                var value = cookie.split("=")[1];
+
+                if (key == "remind" && value == ${goods.id}){
+                    //已经设置过提醒
+                    //修改提醒按钮
+                    $("#remind").hide();
+                    $("#cancel_remind").show();
+                    break;
+                }
+            }
+        });
+
+        function msg_cancel_remind() {
+            $.ajax({
+                url: "msg/cancelRemind",
+                success: function (data) {
+                    if (data == "dele"){
+                        location.reload();
+                    }
+                }
+
+            })
+        }
+
+        /**
+         * 秒杀提醒
+         */
+        function msg_remind(){
+            //ajax通知后台
+            var gid = ${goods.id};
+
+            $.ajax({
+                url: "/msg/remind",
+                data: {"gid":gid},
+                success: function (data) {
+
+                    if (data == "succ"){
+                        //提醒设置成功
+                        //当当前商品提醒的信息b保存到cookie
+                        document.cookie = "remind="+gid;
+
+                        //修改提醒按钮
+                        // $("#remind").hide();
+                        // $("#cancel_remind").show();
+                    }
+                }
+            })
+
+        }
 
         //设置浏览器页面监听
         document.addEventListener('visibilitychange',function(){ //浏览器切换事件
